@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Simkai';
+    src: url('Simkai.eot');
+    src: url('Simkai.eot?#iefix') format('embedded-opentype'),
+         url('Simkai.woff') format('woff'),
+         url('Simkai.ttf') format('truetype'),
+         url('Simkai.svg#Simkai') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
