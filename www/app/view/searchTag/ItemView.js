@@ -15,15 +15,18 @@ window.SearchTagItemView = Backbone.View.extend({
         var self = this;
         var img = this.model.get('userImg') ? this.model.get('userImg') : this.model.get('img');
         if (img)
-            $('<img height="36" width="36" class="list-icon"/>')
-                    .attr('src', serverUrl + 'pub/media/' + img)
-                    .load(
-                    function() {
-                        $('.imgHolder', self.el).html(this);
+            NativeUtil.getFileUrl(
+                    serverUrl + 'pub/media/' + img, img,
+                    function(imgUrl) {
+                        if(imgUrl)
+                            $('<img height="36" width="36" class="list-icon"/>')
+                                .attr('src', imgUrl)
+                                .load(function() {  $('.imgHolder', self.el).html(this);} )
+                                .on('error', function(event) { $('.imgHolder', self.el).remove(); });
+                        else
+                            $('.imgHolder', self.el).remove();
                     }
-            ).on('error', function(event) {
-                $('.imgHolder', self.el).remove();
-            });
+            );
         else
             $('.imgHolder', self.el).remove();
 

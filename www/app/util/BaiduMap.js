@@ -23,7 +23,6 @@ var BaiduMap = window.BaiduMap = BaiduMap || {};
                     var item = json[i];
                     if(item && item.error === 0){
                         var newPt = new BMap.Point(item.x, item.y);
-                        Position = cordova.require('cordova/plugin/Position');
                         var pos = {
                             coords: {
                                 latitude: newPt.lat,
